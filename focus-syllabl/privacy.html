@@ -93,6 +93,15 @@
   .card .links { margin-top: 14px; font-size: 0.9rem; }
   .card .links a { margin-right: 14px; font-weight: 500; text-decoration: none; }
   .card .links a:hover { text-decoration: underline; }
+  .prose .lead { font-size: 1.1rem; }
+  .prose h4 { font-family: "Fredoka", sans-serif; font-weight: 600; margin: 20px 0 4px; }
+  .prose .card { margin: 20px 0; }
+  .prose .card h3.first { margin-top: 0; }
+  .prose table { width: 100%; border-collapse: collapse; margin: 12px 0; color: var(--muted); }
+  .prose th, .prose td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  .prose th { color: var(--text); font-weight: 600; }
+  .prose dt { font-weight: 600; margin-top: 18px; }
+  .prose dd { margin: 4px 0 0; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -118,25 +127,106 @@
       <span class="tag">Productivity</span>
       <h2>Focus Syllabl Privacy Policy</h2>
       <p>Effective October 28, 2026. This policy covers Focus Syllabl, published by KTP and Data, Inc. (KTP Games).</p>
-
-      <h3>What we collect</h3>
-      <p>Your tasks, habits, and plans are stored on your device and, if you use iCloud, in your private iCloud account. We cannot access them. We do not run advertising, third-party analytics, or tracking SDKs, and we do not sell or share data.</p><h3>Groups &amp; Chat (optional)</h3><p>If you choose to use Groups &amp; Chat, the app creates an account on our server (hosted on Microsoft Azure) so you can share with other people. That account stores:</p><ul><li>The display name and avatar you choose, and a random device identifier</li><li>The groups you create or join and their members</li><li>Messages, shared tasks, documents, and files you post to a group</li><li>A push notification token, so you can be notified of new messages</li></ul><p>This content is visible to the members of the groups you share it with. It is not used for advertising or shared with anyone else. Files you upload can be set to expire after a number of days.</p><p><strong>Deleting your data:</strong> you can delete individual documents and files, leave groups, or delete your Groups account entirely from within the app. Deleting your account removes it from our server. You can also email us to request deletion.</p>
-
-      <h3>Permissions</h3>
-      <p><strong>Calendars and Reminders</strong> &mdash; to show and create events and reminders alongside your plans. This data is read on your device and is not sent to our server.</p><p><strong>Notifications</strong> &mdash; used for reminders you set up. Scheduled on your device; you can turn them off in Settings.</p>
-
-      <h3>iCloud and sync</h3>
-      <p>Your personal data syncs between your devices through your own private iCloud account. Widgets read it through a container shared only within the app.</p>
-      <h3>Purchases</h3>
-      <p>Purchases are processed by Apple through the App Store. We never see your payment details; Apple tells the app only which purchases are active.</p>
+      <p class="meta">Effective October 22, 2026</p>
+      <div class="summary">
+      <strong>The short version:</strong> Focus Syllabl stores your tasks, habits,
+      classes, and schedule on your device, and nothing about them reaches us. The
+      only exception is Collaborate, the optional group chat and shared-task
+      feature: if you turn it on, what you share there is stored on our servers so
+      your groups can see it. We don't track you, we don't run analytics or ads,
+      and we never sell your data.
+      </div>
+      <h3>What the app stores, and where</h3>
+      <p>
+      Your tasks, habits, lists, classes, assignments, identity reflections, and
+      settings are stored locally on your device. They are included in your normal
+      device backups (which you control through Apple), and they are deleted when
+      you delete the app. Screenshots you attach to your own tasks stay on your
+      device too. None of this is sent to us.
+      </p>
+      <h3>Collaborate (optional)</h3>
+      <p>
+      Collaborate lets you chat and share tasks, notes, and files with groups you
+      join. It is off until you choose to set it up. When you do, we store:
+      </p>
+      <ul>
+      <li><strong>A display name</strong> you choose, shown to members of your groups.</li>
+      <li><strong>A random device ID and sign-in token</strong> created by the app to
+      recognize your account. They aren't your advertising ID and aren't used
+      for tracking.</li>
+      <li><strong>What you share</strong> — messages, shared tasks, notes, and files —
+      so the members of your groups can see it.</li>
+      <li><strong>A push notification token</strong>, so you can be notified of new
+      messages.</li>
+      </ul>
+      <p>
+      This data is stored on Microsoft Azure servers in the United States. Images
+      you upload are checked by Microsoft's Azure AI Content Safety service to
+      block harmful content. Content you delete, and files past the keep-for time
+      you picked, are permanently removed by a nightly cleanup; content that has
+      been reported may be kept until it's reviewed. When something is reported, a
+      record of the report — including the reported content — is kept in our
+      server logs for up to 90 days.
+      </p>
+      <p>
+      You can delete your Collaborate account at any time in the app:
+      <strong>Settings → Collaborate → Delete Collaborate Account</strong>. This
+      deletes your messages and uploaded files, removes you from every group, and
+      erases your name. Shared tasks and notes you worked on stay with their group,
+      shown as "Deleted user". Collaborate's terms of use, including its
+      community rules, are shown in the app before you set it up.
+      </p>
+      <h3>Calendar access</h3>
+      <p>
+      If you grant calendar permission, Focus Syllabl reads events from the
+      calendars you choose so they can appear alongside your classes and tasks.
+      Access is read-only — the app never changes your calendars — and the events
+      are displayed on your device only.
+      </p>
+      <h3>Apple Reminders sync</h3>
+      <p>
+      If you grant reminders permission, the reminder lists you create in Focus
+      Syllabl sync with Apple Reminders through your own iCloud account, so you
+      can edit them in either app. That sync is between your device and your
+      iCloud account and is governed by
+      <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>;
+      we never see it.
+      </p>
+      <h3>Notifications</h3>
+      <p>
+      Reminders for habits, tasks, classes, and assignments are local
+      notifications, scheduled entirely on your device. If you use Collaborate,
+      new-message notifications are sent through Apple's push notification
+      service. You can turn notifications off in the app's settings or in iOS
+      Settings at any time.
+      </p>
+      <h3>Widgets</h3>
+      <p>
+      Home-screen widgets read your data through Apple's app-group container on
+      your device. Nothing is transmitted anywhere.
+      </p>
+      <h3>If you email us</h3>
+      <p>
+      If you contact us — for example, sending syllabi so we can consider
+      supporting your school — we use what you send only to answer you and to
+      build that support. We don't add you to mailing lists or share your email
+      or attachments with anyone.
+      </p>
       <h3>Children</h3>
-      <p>We do not knowingly collect personal information from children.</p>
-
-      <h3>Changes</h3>
-      <p>If this policy changes, we will update this page and the effective date above.</p>
-
+      <p>
+      Collaborate is for people 13 and older. The rest of Focus Syllabl collects
+      no personal data from anyone, including children.
+      </p>
+      <h3>Changes to this policy</h3>
+      <p>
+      If the app's behavior ever changes in a way that affects your privacy, we
+      will update this page and change the effective date above.
+      </p>
       <h3>Contact</h3>
-      <p>Questions about privacy: <a href="mailto:support@ktpdata.com">support@ktpdata.com</a></p>
+      <p>
+      Questions? Email
+      <a href="mailto:support@ktpdata.com">support@ktpdata.com</a>.
+      </p>
       <p><a href="support.html">Focus Syllabl Support</a></p>
     </div>
   </section>

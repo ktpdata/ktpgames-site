@@ -93,6 +93,15 @@
   .card .links { margin-top: 14px; font-size: 0.9rem; }
   .card .links a { margin-right: 14px; font-weight: 500; text-decoration: none; }
   .card .links a:hover { text-decoration: underline; }
+  .prose .lead { font-size: 1.1rem; }
+  .prose h4 { font-family: "Fredoka", sans-serif; font-weight: 600; margin: 20px 0 4px; }
+  .prose .card { margin: 20px 0; }
+  .prose .card h3.first { margin-top: 0; }
+  .prose table { width: 100%; border-collapse: collapse; margin: 12px 0; color: var(--muted); }
+  .prose th, .prose td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  .prose th { color: var(--text); font-weight: 600; }
+  .prose dt { font-weight: 600; margin-top: 18px; }
+  .prose dd { margin: 4px 0 0; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -117,14 +126,59 @@
       <a class="back" href="/#apps">&larr; All apps</a>
       <span class="tag">Photo</span>
       <h2>myMemoryTide Support</h2>
-      <p>myMemoryTide brings back photos from your library by month, place, people you tag, and the kinds of moments they capture, with search across all of it.</p>
-
-      <h3>Get help</h3>
-      <p>Found a bug, have a question, or want to suggest a feature? Email us and include the app name, your device model, and your iOS version.</p>
-      <p><a class="btn" href="mailto:support@ktpdata.com?subject=myMemoryTide%20Support">support@ktpdata.com</a></p>
-
-      <h3>Privacy</h3>
-      <p>Read the <a href="privacy.html">myMemoryTide Privacy Policy</a>.</p>
+      <p>
+      myMemoryTide brings back your photo memories from this day in past years and turns them
+      into slideshows you can share. Everything runs privately, on your iPhone.
+      </p>
+      <div class="card">
+      <strong>Need help?</strong> For questions, bug reports, or feature ideas, email
+      <a href="mailto:support@ktpdata.com?subject=myMemoryTide%20support">support@ktpdata.com</a>.
+      Include your iPhone model and iOS version so we can help faster.
+      </div>
+      <h3>Common questions</h3>
+      <dl>
+      <dt>Why does myMemoryTide need access to my photos?</dt>
+      <dd>It reads your library to show memories from this day, find related pictures, and build
+      slideshows. Your photos never leave your iPhone. You can allow all photos or only the ones
+      you pick, and change that anytime in Settings → Privacy &amp; Security → Photos →
+      myMemoryTide.</dd>
+      <dt>Some of my photos are missing.</dt>
+      <dd>If you gave access to only some photos, the app can only see those. Tap Select More
+      Photos to add more. To include iCloud Shared Albums, turn them on under Shared Folders →
+      Photo Sources.</dd>
+      <dt>Search or Places is still filling in.</dt>
+      <dd>The app indexes your library on your iPhone, and place names are looked up gradually.
+      For a large library, keep the app open with your iPhone plugged in. It always picks up
+      where it left off.</dd>
+      <dt>What can I search for?</dt>
+      <dd>Try a scene or thing ("beach," "dog," "sunset"), a place ("Paris"), a name you've added
+      in People, or a date ("Jul 22"). You can also browse your Timeline by what's in your photos,
+      browse by place month by month, or tap Random day.</dd>
+      <dt>How does People work?</dt>
+      <dd>Tap Find Faces and the app finds faces in your photos, on your iPhone. You then pick the
+      faces that show the same person and name them yourself. Nothing about faces is sent to
+      us.</dd>
+      <dt>Which slideshow shape should I pick?</dt>
+      <dd>Square works best for social feeds, Landscape (16:9) is made for YouTube, and Portrait
+      (9:16) fits Shorts and Reels. Photos fill the whole frame, so some edges may be
+      cropped.</dd>
+      <dt>Where do my slideshows go?</dt>
+      <dd>When a slideshow is ready, tap Share to send it anywhere, or Save to Photos to keep it
+      in your library. Tap Edit to change it.</dd>
+      <dt>How do subscriptions work?</dt>
+      <dd>myMemoryTide Premium unlocks slideshows, Places, Search, People, and Timeline. It costs
+      $2.99/month or $29.99/year after a 1-week free trial, billed through your Apple Account.
+      Sharing memories is free for your first 60 days. Manage or cancel anytime in Settings → your
+      name → Subscriptions. On a new device, tap Restore Purchases in the app's settings.</dd>
+      <dt>Why can't I delete some photos in the app?</dt>
+      <dd>Photos from an iCloud Shared Album belong to the person who shared them, so iOS
+      doesn't let the app delete them. You can manage them in the Photos app. Deleting your own
+      photos always asks you to confirm first.</dd>
+      <dt>Where is my data stored?</dt>
+      <dd>On your iPhone. The app collects nothing. See the
+      <a href="privacy.html">privacy policy</a>.</dd>
+      </dl>
+      <p><a href="privacy.html">myMemoryTide Privacy Policy</a></p>
     </div>
   </section>
 </main>
