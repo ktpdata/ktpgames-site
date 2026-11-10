@@ -34,10 +34,10 @@
       <a class="back" href="/#apps">&larr; All apps</a>
       <span class="tag">Education</span>
       <h2>Brain Drain Vocab Privacy Policy</h2>
-      <p>Effective November 4, 2026. This policy covers Brain Drain Vocab, published by KTP and Data, Inc. (KTP Games). It adds app-specific detail to the <a href="/privacy.html">KTP Games privacy policy</a>.</p>
+      <p>Effective November 10, 2026. This policy covers Brain Drain Vocab, published by KTP and Data, Inc. (KTP Games). It adds app-specific detail to the <a href="/privacy.html">KTP Games privacy policy</a>.</p>
 
       <h3>The short version</h3>
-      <p>Brain Drain Vocab does not collect your data. There are no accounts, no analytics, no advertising, and no tracking. Everything your family does in the app stays on your devices and in your own iCloud, where we cannot see it. The app talks only to Apple: iCloud for sync and the App Store for subscriptions.</p>
+      <p>Brain Drain Vocab does not collect your data. There are no accounts, no analytics, no advertising, and no tracking. Everything your family does in the app stays on your devices and in your own iCloud, where we cannot see it. On iPhone and iPad the app talks only to Apple: iCloud for sync and the App Store for subscriptions. On Android it talks only to Google Play, for subscriptions, and keeps everything on the device.</p>
       <p>This policy is written to be read by a parent, not a lawyer.</p>
 
       <h3>What the app stores</h3>
@@ -48,12 +48,20 @@
       <tr><td>Answers: which question, which choice, right or wrong, and how long it took</td><td>Brings missed words back, decides when a learner can move up, and powers the stats page</td></tr>
       <tr><td>Streaks, sessions, and level history</td><td>Shown on the learner's stats page and the parent's family view</td></tr>
       <tr><td>Reminder settings: on or off, time, days, and which device rings</td><td>So a reminder rings on one device, not every device in the house</td></tr>
-      <tr><td>The parent PIN and any profile PINs, stored only as scrambled (hashed) values</td><td>Keeps children out of settings and out of each other's profiles. The actual digits are never stored.</td></tr>
+      <tr><td>The parent PIN and any optional learner PINs, stored only as scrambled (hashed) values</td><td>Keeps children out of settings and, if a parent turns learner PINs on, out of each other's profiles. The actual digits are never stored.</td></tr>
+      <tr><td>The idle timeout setting (Never, 1, 2, or 5 minutes)</td><td>On a shared device, returns to the list of learners after a learner stops using the app, so the next child doesn't land in someone else's profile</td></tr>
       </table>
       <p>The app does not ask for, and has no way to record, an email address, phone number, full name, school, location, contacts, or photos. The vocabulary words and questions are built into the app; nothing is generated online.</p>
 
       <h3>Where it is kept</h3>
-      <p>On the device, and synced between your family's devices through your private iCloud account using Apple's CloudKit private database. That copy belongs to your iCloud account. We cannot read it, and it never reaches us. If no one is signed in to iCloud, the data stays on that single device and the app says so.</p>
+      <p>On iPhone and iPad: on the device, and synced between your family's devices through your private iCloud account using Apple's CloudKit private database. That copy belongs to your iCloud account. We cannot read it, and it never reaches us. If no one is signed in to iCloud, the data stays on that single device and the app says so.</p>
+      <p>On Android: on the device only. Nothing is synced or backed up by the app, and nothing is sent anywhere.</p>
+
+      <h3>Parent PIN, learner PINs, and Face ID</h3>
+      <p>The parent area is protected by a 6-digit parent PIN that you choose. It is stored only as a scrambled (hashed) value, never as the digits. On iPhone and iPad it syncs to your other family devices through your private iCloud, so the same PIN works on each of them; on Android it stays on the device. It is never sent to us and never shown in the app. After several wrong tries, entry pauses for a short time, and the pause grows with repeated wrong tries.</p>
+      <p>If you forget the parent PIN, you can reset it by confirming you are the device's owner with Face ID, Touch ID, or your device passcode (on Android, the device's own fingerprint, face, or screen lock). That check is performed entirely by the operating system. The app receives only a yes or no answer and never has access to your face, fingerprint, or passcode. The check only lets you choose a new PIN; it never opens the parent area by itself. After a reset, the parent area shows a notice that the PIN was changed until a parent dismisses it. Face ID is used for nothing else in the app.</p>
+      <p><strong>Learner PINs are optional and off by default.</strong> A parent can turn them on in the parent area and give any learner a 3- or 4-digit PIN. Only a parent can set, change, or remove one. They are stored the same way as the parent PIN: hashed, synced through your private iCloud on Apple devices, and kept on the device on Android. A learner PIN is a convenience lock between siblings, not a security measure; the parent PIN guards everything that matters.</p>
+      <p>We have no server for this app, so we cannot see, recover, or reset any PIN for you.</p>
 
       <h3>Permissions</h3>
       <p>The app asks for one permission, and only if a parent turns on reminders: <strong>Notifications</strong>. Reminders are scheduled on the device itself, never sent from a server, and never ring between 9 p.m. and 7 a.m. You can turn them off in the app or in Settings at any time. The app does not use the camera, microphone, photos, location, contacts, or health data.</p>
@@ -62,13 +70,13 @@
       <p>Brain Drain Vocab is made for children and families and is built to collect no personal information.</p>
       <ul>
         <li>No advertising, no chat, no sharing, and no links to other apps on screens children use.</li>
-        <li>The parent PIN guards adding or deleting profiles, the family stats view, reminder settings, the subscription screen, and any link that leaves the app.</li>
+        <li>The parent PIN guards adding or deleting profiles, learner PINs, the idle timeout, the family stats view, reminder settings, the subscription screen, and any link that leaves the app.</li>
         <li>Deleting a profile permanently erases that learner's answers and progress on every device synced to your iCloud.</li>
       </ul>
       <p>We do not knowingly collect personal information from anyone, of any age.</p>
 
       <h3>Subscriptions and payments</h3>
-      <p>Training is available with an auto-renewing subscription. Purchases are handled entirely by Apple. We never see, receive, or store your name, payment details, or billing address. Apple tells the app only whether a subscription is active for the Apple Account on the device. The subscription screen sits behind the parent PIN. Apple's handling of purchase information is covered by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
+      <p>Training is available with an auto-renewing subscription. Purchases are handled entirely by Apple on iPhone and iPad and by Google Play on Android. We never see, receive, or store your name, payment details, or billing address. The store tells the app only whether a subscription is active for the account on the device. The subscription screen sits behind the parent PIN. Purchase information is covered by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a> and <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
 
       <h3>What we do not do</h3>
       <ul>
@@ -80,13 +88,14 @@
       </ul>
 
       <h3>Crash reports</h3>
-      <p>If you have chosen in your device's settings to share analytics with app developers, Apple may send us anonymous crash reports, which we use only to fix bugs.</p>
+      <p>If you have chosen in your device's settings to share analytics with app developers, Apple or Google may send us anonymous crash reports, which we use only to fix bugs.</p>
 
       <h3>Deleting your data</h3>
       <ul>
         <li>One learner: delete the profile in the app (parent PIN required). This removes it from every synced device.</li>
         <li>Everything on one device: delete the app.</li>
         <li>Everything in iCloud: Settings &gt; [your name] &gt; iCloud &gt; Manage Account Storage &gt; Brain Drain Vocab &gt; Delete Data.</li>
+        <li>Everything on Android: uninstall the app, or clear its storage in Settings &gt; Apps &gt; Brain Drain Vocab &gt; Storage.</li>
       </ul>
 
       <h3>Your rights</h3>
