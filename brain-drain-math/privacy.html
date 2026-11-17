@@ -34,9 +34,9 @@
       <a class="back" href="/#apps">&larr; All apps</a>
       <span class="tag">Education</span>
       <h2>Brain Drain Math Privacy Policy</h2>
-      <p>Effective November 11, 2026. This policy covers Brain Drain Math, published by KTP and Data, Inc. (KTP Games).</p>
+      <p>Effective November 17, 2026. This policy covers Brain Drain Math on iPhone, iPad and Android, published by KTP and Data, Inc. (KTP Games). Where the two versions differ, this page says so.</p>
       <h3>The short version</h3>
-      <p>Brain Drain Math does not collect your data. There are no accounts, no analytics, no advertising, no tracking, and the app makes no network requests of its own. Everything a player does in the app stays on the device.</p>
+      <p>Brain Drain Math does not collect your data. There are no accounts, no analytics, no advertising, no tracking, and the app makes no network requests of its own. Everything a player does in the app stays on the device. On iPhone and iPad the app talks only to Apple, for subscriptions. On Android it talks only to Google Play, for subscriptions, and does not have permission to use the internet at all.</p>
       <p>This policy is written to be read by a parent, not a lawyer.</p>
       <h3>Who we are</h3>
       <p>KTP and Data, Inc. (KTP Games) publishes Brain Drain Math. If you have a question about this policy, contact us at <a href="mailto:support@ktpdata.com">support@ktpdata.com</a>.</p>
@@ -50,10 +50,12 @@
       <tr><td>Gold and unlocked characters in Maze Runner</td><td>Part of that game</td></tr>
       <tr><td>Accessibility preferences</td><td>Remembers your colorblind display, sound, and reward world settings</td></tr>
       <tr><td>The reward world chosen for each child (Space Station or Aquarium)</td><td>Shows each child the world a parent picked for them</td></tr>
-      <tr><td>The parent PIN, stored only as a scrambled (hashed) value in the device's secure Keychain</td><td>Keeps children out of purchases, settings, and outside links. The actual digits are never stored.</td></tr>
+      <tr><td>Minutes played each day by each child, kept for the last seven days (Android)</td><td>Lets a parent see play time and approve more time after an hour</td></tr>
+      <tr><td>The parent PIN, stored only as a scrambled (hashed) value in the device's secure storage (the Keychain on iPhone and iPad, encrypted with the Android Keystore on Android)</td><td>Keeps children out of purchases, settings, and outside links. The actual digits are never stored.</td></tr>
       <tr><td>An optional player PIN for each child, stored the same way</td><td>Lets a parent stop one child from playing on another child's profile. The actual digits are never stored.</td></tr>
       </table>
-      <p>None of it is transmitted anywhere. It is not backed up to our servers, because we do not operate any. If the app is deleted, this data is deleted with it. The PINs are the one exception in how that happens: iOS keeps Keychain items when an app is deleted, so the app erases any old PINs itself the first time it is opened after being installed again.</p>
+      <p>None of it is sent to us. We do not operate any servers. If the app is deleted, this data is deleted with it. The PINs are the one exception in how that happens on iPhone and iPad: iOS keeps Keychain items when an app is deleted, so the app erases any old PINs itself the first time it is opened after being installed again.</p>
+      <p><strong>Device backups.</strong> Your device's own backup may include the app's progress so a child keeps it on a new device: iCloud Backup on iPhone and iPad, and Android Backup to your Google account on Android. Those backups are made, encrypted and stored by Apple or Google under your account; we never see them. On Android, PINs and daily play-time records are left out of backups and phone transfers on purpose.</p>
       <p>The name can be anything you like — a nickname works just as well. Beyond what is in the table, the app does not ask for, and has no way to record, an email address, photograph, location, contacts, or a date of birth beyond the birth <strong>year</strong> used to pick a difficulty level.</p>
       <h3>What we do not do</h3>
       <ul>
@@ -69,20 +71,21 @@
       <p>Brain Drain Math is for all ages. Many families use it with their children, so it is built to be safe for them. Because we collect no personal information at all, there is nothing for us to disclose, share, or delete on request.</p>
       <p>We do not knowingly collect personal information from anyone, of any age.</p>
       <p>Parents stay in control on the device too: adding and removing a child's profile both sit behind the parent PIN, and removing one permanently deletes that child's progress from the device.</p>
-      <h3>Parent PIN, player PINs and Face ID</h3>
-      <p>Purchases, settings, and any link that leaves the app are protected by a 6-digit parent PIN that you choose. The PIN is stored only as a scrambled (hashed) value in this device's secure Keychain. It is never synced, never sent to us, and never shown in the app. After several wrong tries, entry pauses for a short time, and the pause grows with repeated wrong tries.</p>
-      <p>If you forget the PIN, you can reset it by confirming you are the device's owner with Face ID, Touch ID, or your device passcode. That check is performed entirely by iOS. The app receives only a yes or no answer and never has access to your face, fingerprint, or passcode. Face ID is used for nothing else in the app.</p>
-      <p>A parent can also set an optional 4-digit player PIN for any child, so that one child cannot switch to another child's profile. Player PINs are stored the same way as the parent PIN: only as a scrambled (hashed) value in this device's secure Keychain, never synced and never sent to us. A player PIN unlocks only that child's profile. It never opens purchases, settings, or anything else the parent PIN protects, and a parent can always get past it with the parent PIN.</p>
+      <h3>Parent PIN, player PINs and device unlock</h3>
+      <p>Purchases, settings, and any link that leaves the app are protected by a 6-digit parent PIN that you choose. The PIN is stored only as a scrambled (hashed) value in this device's secure storage. It is never synced, never backed up, never sent to us, and never shown in the app. After several wrong tries, entry pauses for a short time, and the pause grows with repeated wrong tries.</p>
+      <p>If you forget the PIN, you can reset it by confirming you are the device's owner with Face ID, Touch ID, or your device passcode (on Android, the device's own fingerprint, face unlock, or screen lock). That check is performed entirely by the operating system. The app receives only a yes or no answer and never has access to your face, fingerprint, or passcode. Biometric unlock is used for nothing else in the app.</p>
+      <p>A parent can also set an optional 4-digit player PIN for any child, so that one child cannot switch to another child's profile. Player PINs are stored the same way as the parent PIN: only as a scrambled (hashed) value in this device's secure storage, never synced, never backed up and never sent to us. A player PIN unlocks only that child's profile. It never opens purchases, settings, or anything else the parent PIN protects, and a parent can always get past it with the parent PIN.</p>
       <h3>Subscriptions and payments</h3>
-      <p>Brain Drain Math Premium is available as an auto-renewing subscription. Purchases are handled entirely by Apple. We never see, receive, or store your name, payment-card details, or billing address — Apple tells the app only whether an active subscription exists for the Apple Account signed in on the device.</p>
-      <p>Apple's handling of purchase information is covered by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
+      <p>Brain Drain Math Premium is available as an auto-renewing subscription. Purchases are handled entirely by Apple on iPhone and iPad and by Google Play on Android. We never see, receive, or store your name, payment-card details, or billing address. The store tells the app only whether an active subscription exists for the account signed in on the device.</p>
+      <p>On Android, the app checks with Google Play when the device is online. If it cannot check for more than 72 hours, Premium pauses until the device is back online; no progress is lost. To do this the app reads only whether the device has a connection; it cannot send or receive anything over it.</p>
+      <p>Purchase information is covered by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a> and <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
       <p>The parent PIN stands in front of the paywall, so a child cannot reach a purchase unaided.</p>
       <h3>Diagnostic logging</h3>
-      <p>The app writes diagnostic messages to the device's own system log to help with troubleshooting. These stay on the device, are not transmitted to us, and any value that could identify a player is marked private so it is redacted. If you've chosen to share analytics with app developers in your device settings, Apple may send us anonymous crash reports, which we use only to fix bugs.</p>
+      <p>The app writes diagnostic messages to the device's own system log to help with troubleshooting. These stay on the device, are not transmitted to us, and any value that could identify a player is marked private so it is redacted. If you've chosen to share diagnostics with app developers in your device settings, Apple or Google may send us anonymous crash reports, which we use only to fix bugs.</p>
       <h3>Your rights</h3>
-      <p>Privacy laws including the GDPR and the CCPA give you rights to access, correct, and delete personal information a company holds about you. We hold none, so there is nothing to request. You can erase a single child's data with the in-app removal control, or erase everything by deleting the app from your device.</p>
+      <p>Privacy laws including the GDPR and the CCPA give you rights to access, correct, and delete personal information a company holds about you. We hold none, so there is nothing to request. You can erase a single child's data with the in-app removal control, or erase everything by deleting the app from your device. On Android you can also clear its storage in Settings &gt; Apps &gt; Brain Drain Math &gt; Storage.</p>
       <h3>Changes to this policy</h3>
-      <p>If this policy changes, the updated version will be posted at this address with a new effective date. If a future version of the app ever collects anything, we will say so here clearly and in the App Store privacy label before it ships.</p>
+      <p>If this policy changes, the updated version will be posted at this address with a new effective date. If a future version of the app ever collects anything, we will say so here clearly and in the App Store privacy label and the Google Play Data safety section before it ships.</p>
       <h3>Contact</h3>
       <p><a href="mailto:support@ktpdata.com">support@ktpdata.com</a></p>
       <p><a href="support.html">Brain Drain Math Support</a></p>
