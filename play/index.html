@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Play free in your browser — KTP Games</title>
+<meta name="description" content="Play one course of Brain Drain Flying and one track of Brain Drain Racing free in your browser. No download, no sign-up.">
+<link rel="canonical" href="https://ktpdata.com/play/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0f1424">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Play Brain Drain Flying and Racing free in your browser">
+<meta property="og:description" content="One course of each, no download. Keyboard on desktop, touch on phone.">
+<meta property="og:url" content="https://ktpdata.com/play/">
+<meta property="og:image" content="https://ktpdata.com/assets/og.png">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+.play-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.play-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+.play-card .shot{aspect-ratio:16/10;background:#0b0f1c center/cover no-repeat;display:block}
+.play-card .body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px}
+.play-card h3{font-family:var(--rounded);font-weight:600;font-size:1.35rem;margin:0}
+.play-card p{color:var(--muted);margin:0}
+.play-card .keys{font-size:.85rem;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.play-card .btn{align-self:flex-start;margin-top:6px}
+.note{color:var(--muted);font-size:.95rem;max-width:720px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <div class="wrap">
+    <nav aria-label="Primary">
+      <a class="logo" href="/"><img src="/assets/icons/ktp.svg" alt="" width="28" height="28"><span class="word">KTP<span>Games</span></span></a>
+      <ul>
+        <li><a href="/#apps">Apps</a></li>
+        <li><a href="/play/">Play</a></li>
+        <li><a href="/privacy.html">Privacy</a></li>
+        <li><a href="/#support">Support</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section>
+    <div class="wrap">
+      <h2>Play free in your browser</h2>
+      <p class="sub">One course of each game, the real thing — not a video. No download, no sign-up, nothing collected. Keyboard on a computer, touch on a phone. The full games are coming to the App Store.</p>
+      <div class="play-grid">
+        <article class="play-card">
+          <a class="shot" href="/play/flying/" style="background-image:url('/play/flying-shot.jpg')" aria-label="Play Brain Drain Flying"></a>
+          <div class="body">
+            <h3>Brain Drain Flying</h3>
+            <p>Fly the trainer around Cape Aidan: take off, thread the rings, land on the strip. The full game has 12 courses, 4 planes, deliveries and daily landing challenges.</p>
+            <p class="keys">W/S pitch · A/D bank · Space throttle · R reset · P pause</p>
+            <a class="btn" href="/play/flying/">Fly Cape Aidan</a>
+          </div>
+        </article>
+        <article class="play-card">
+          <a class="shot" href="/play/racing/" style="background-image:url('/play/racing-shot.jpg')" aria-label="Play Brain Drain Racing"></a>
+          <div class="body">
+            <h3>Brain Drain Racing</h3>
+            <p>Time-trial the Cape Aidan circuit and beat your own ghost. The full game has 10 tracks, 4 cars, AI opponents and garage upgrades earned with math.</p>
+            <p class="keys">↑/W gas · ↓/S brake · ←/→ steer · Shift handbrake</p>
+            <a class="btn" href="/play/racing/">Race Cape Aidan</a>
+          </div>
+        </article>
+      </div>
+      <p class="note" style="margin-top:28px">Both demos run entirely in your browser. Progress is saved on your device only. If a demo runs slowly, try a desktop browser or close other tabs — the 3D scenes want a bit of graphics power.</p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 KTP and Data, Inc. All rights reserved. KTP Games is a trade name of KTP and Data, Inc.</div>
+    <div class="links"><a href="/privacy.html">Privacy</a><a href="/#support">Support</a><a href="mailto:support@ktpdata.com">Contact</a></div>
+  </div>
+</footer>
+</body>
+</html>

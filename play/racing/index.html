@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Brain Drain Racing</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="/play/demo.css">
+<link rel="canonical" href="https://ktpdata.com/play/racing/">
+</head>
+<body data-mode="setup">
+<main id="scene" aria-hidden="true"></main>
+<div id="hud">
+  <div class="tools">
+    <button id="recenter" class="tool" data-t-label="recenter"><svg viewBox="0 0 20 20"><path d="M3 10h4m6 0h4M10 3v4m0 6v4"/><circle cx="10" cy="10" r="2"/></svg></button>
+    <button id="pause" class="tool" data-t-label="pause"><svg viewBox="0 0 20 20"><path d="M7 5v10m6-10v10"/></svg></button>
+  </div>
+  <div class="timing card">
+    <div class="timing-row"><span class="label" id="lapLabel"></span><span class="label" id="position" hidden></span></div>
+    <div class="timing-row" id="pitRow" hidden><span class="label" id="pitFlag"></span></div>
+    <strong id="lapTime">0:00.000</strong>
+    <div class="timing-row"><span class="label" data-t="best"></span><span id="bestTime">–:––.–––</span></div>
+    <div class="timing-row" id="gapRow" hidden><span class="label" id="gapLabel" data-t="ghostGap"></span><span id="gap"></span></div>
+  </div>
+  <div class="map card"><canvas id="map"></canvas></div>
+  <div id="toast" class="card" role="status" hidden></div>
+  <div id="goal" class="card" hidden></div>
+  <div id="countdown" hidden></div>
+  <div class="speedo card"><strong id="speed">0</strong><small data-t="mph"></small></div>
+  <div id="steerMeter" aria-hidden="true"><i id="steerNeedle"></i></div>
+  <div class="steer-buttons">
+    <button class="pedal steer" data-hold="left" data-t-label="steerLeft">◀</button>
+    <button class="pedal steer" data-hold="right" data-t-label="steerRight">▶</button>
+  </div>
+  <div class="pedals-right"><button id="handbrake" class="pedal" data-hold="handbrake" data-t="handbrake"></button><button id="brake" class="pedal" data-hold="brake" data-t="brake"></button></div>
+  <div class="pedals-left"><button id="throttle" class="pedal" data-hold="throttle" data-t="throttle"></button></div>
+  <section id="setup" class="panel setup">
+    <h1 data-t="appName"></h1>
+    <div class="setup-grid">
+      <label for="pickMode" data-t="labelMode"></label><select id="pickMode"></select>
+      <label for="pickTrack" id="pickTrackLabel" data-t="labelTrack"></label><select id="pickTrack"></select>
+      <label for="pickLayout" data-t="labelLayout"></label><select id="pickLayout"></select>
+      <label for="pickCar" data-t="labelCar"></label><select id="pickCar"></select>
+      <label for="pickDifficulty" data-t="labelDifficulty"></label><select id="pickDifficulty"></select>
+      <label for="pickModel" data-t="labelModel"></label><select id="pickModel"></select>
+      <label for="pickSensitivity" data-t="labelSteering"></label><select id="pickSensitivity"></select>
+    </div>
+    <div class="setup-toggles">
+      <button id="racingLine" class="toggle" aria-pressed="false" data-t="racingLine"></button>
+      <button id="autoGas" class="toggle" aria-pressed="false" data-t="autoGas"></button>
+      <button id="tiltOnIPad" class="toggle" aria-pressed="false" data-t="tiltOnIPad" hidden></button>
+    </div>
+    <p class="setup-info"><span id="modeHint"></span> <span id="setupBest"></span></p>
+    <p class="setup-info" id="setupMath"></p>
+    <div class="actions">
+      <button id="start" class="primary" data-t="start"></button>
+      <button id="leaderboard" class="secondary" data-t="gameCenter" hidden></button>
+      <button id="garageOpen" class="secondary" data-t="garage"></button>
+    </div>
+  </section>
+  <section id="garage" class="panel garage" aria-labelledby="garageTitle">
+    <div id="garageMain">
+      <h2 id="garageTitle"></h2>
+      <p class="garage-line"><strong id="garageCredits"></strong> · <span id="garageMath"></span></p>
+      <p class="garage-note" data-t="garageNoteModes"></p>
+      <div class="upgrade-row"><span class="upgrade-name" data-t="part.engine"></span><span class="upgrade-bar" id="bar-engine" role="img"><i id="bar-engine-0"></i><i id="bar-engine-1"></i><i id="bar-engine-2"></i></span><button id="buy-engine" class="secondary upgrade-buy"></button></div>
+      <div class="upgrade-row"><span class="upgrade-name" data-t="part.tyres"></span><span class="upgrade-bar" id="bar-tyres" role="img"><i id="bar-tyres-0"></i><i id="bar-tyres-1"></i><i id="bar-tyres-2"></i></span><button id="buy-tyres" class="secondary upgrade-buy"></button></div>
+      <div class="upgrade-row"><span class="upgrade-name" data-t="part.brakes"></span><span class="upgrade-bar" id="bar-brakes" role="img"><i id="bar-brakes-0"></i><i id="bar-brakes-1"></i><i id="bar-brakes-2"></i></span><button id="buy-brakes" class="secondary upgrade-buy"></button></div>
+      <div class="upgrade-row"><span class="upgrade-name" data-t="part.aero"></span><span class="upgrade-bar" id="bar-aero" role="img"><i id="bar-aero-0"></i><i id="bar-aero-1"></i><i id="bar-aero-2"></i></span><button id="buy-aero" class="secondary upgrade-buy"></button></div>
+      <p id="garageNote" class="garage-note" role="status"></p>
+      <div class="actions">
+        <button id="drillStart" class="primary" data-t="drill"></button>
+        <button id="garageBack" class="secondary" data-t="back"></button>
+      </div>
+    </div>
+    <div id="drill" hidden>
+      <h2 id="drillCount"></h2>
+      <p id="drillQuestion" class="pit-question"></p>
+      <div class="pit-answers"><button id="drillA0" class="pit-answer"></button><button id="drillA1" class="pit-answer"></button><button id="drillA2" class="pit-answer"></button></div>
+      <p id="drillResult" class="pit-result" role="status" aria-live="polite"></p>
+      <button id="drillNext" class="primary" hidden></button>
+    </div>
+  </section>
+  <section id="pitStop" class="panel pit" hidden aria-labelledby="pitTaskName">
+    <ol class="pit-tasks">
+      <li id="pitTask-tyres" data-t="pitTask.tyres"></li><li id="pitTask-fuel" data-t="pitTask.fuel"></li><li id="pitTask-wing" data-t="pitTask.wing"></li><li id="pitTask-check" data-t="pitTask.check"></li>
+    </ol>
+    <h2 id="pitTaskName"></h2>
+    <p id="pitQuestion" class="pit-question"></p>
+    <div class="pit-answers"><button id="pitA0" class="pit-answer"></button><button id="pitA1" class="pit-answer"></button><button id="pitA2" class="pit-answer"></button></div>
+    <p id="pitResult" class="pit-result" role="status" aria-live="polite"></p>
+    <p class="pit-clock"><span data-t="pitClock"></span> <strong id="pitClock">0:00.000</strong></p>
+  </section>
+  <section id="overlay" class="panel">
+    <h2 id="overlayTitle" data-t="paused"></h2>
+    <p id="overlayMsg" data-t="holdLikeWheel"></p>
+    <div class="actions">
+      <button id="overlayAction" class="primary" data-t="resume"></button>
+      <button id="overlayNext" class="primary" hidden></button>
+      <button id="overlayRestart" class="secondary" data-t="restart"></button>
+      <button id="overlaySetup" class="secondary" data-t="setup"></button>
+    </div>
+  </section>
+</div>
+<script src="three.min.js"></script>
+<script src="GLTFLoader.js"></script>
+<script src="game/core.js"></script>
+<script src="game/strings.js"></script>
+<script src="models/cape-aidan-gt.model.js"></script>
+<script src="models/cape-aidan-gt_lod.model.js"></script>
+<script src="models/muscle-car.model.js"></script>
+<script src="models/muscle-car_lod.model.js"></script>
+<script src="models/open-wheel-racer.model.js"></script>
+<script src="models/open-wheel-racer_lod.model.js"></script>
+<script src="models/rally-car.model.js"></script>
+<script src="models/rally-car_lod.model.js"></script>
+<script src="data/tracks.js"></script>
+<script src="data/cars.js"></script>
+<script src="data/difficulty.js"></script>
+<script src="data/options.js"></script>
+<script src="data/pit.js"></script>
+<script src="data/math-levels.js"></script>
+<script src="data/upgrades.js"></script>
+<script src="data/lessons.js"></script>
+<script src="demo.js"></script>
+<script src="game/track.js"></script>
+<script src="game/roadmesh.js"></script>
+<script src="game/props.js"></script>
+<script src="game/landmarks.js"></script>
+<script src="game/scenery.js"></script>
+<script src="game/bridge.js"></script>
+<script src="game/store.js"></script>
+<script src="game/input.js"></script>
+<script src="game/surfaces.js"></script>
+<script src="game/pitlane.js"></script>
+<script src="game/quiz.js"></script>
+<script src="game/physics.js"></script>
+<script src="game/simulator.js"></script>
+<script src="game/models.js"></script>
+<script src="game/car.js"></script>
+<script src="game/camera.js"></script>
+<script src="game/laps.js"></script>
+<script src="game/ghost.js"></script>
+<script src="game/school.js"></script>
+<script src="game/daily.js"></script>
+<script src="game/ai.js"></script>
+<script src="game/race.js"></script>
+<script src="game/pitstop.js"></script>
+<script src="game/garage.js"></script>
+<script src="game/garageview.js"></script>
+<script src="game/modes.js"></script>
+<script src="game/session.js"></script>
+<script src="game/minimap.js"></script>
+<script src="game/hud.js"></script>
+<script src="game/setup.js"></script>
+<script src="game/main.js"></script>
+</body>
+</html>

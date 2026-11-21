@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#173b37"><title>Brain Drain Flying · Cape Aidan</title><link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="/play/demo.css">
+<link rel="canonical" href="https://ktpdata.com/play/flying/">
+</head><body>
+<main id="scene" aria-label="Three-dimensional flight over Cape Aidan"></main>
+<div id="hud" inert>
+<header class="header"><svg class="badge" aria-hidden="true" viewBox="0 0 64 64"><path fill="#174039" d="M32 2 59 14v22c0 12-13 20-27 27C18 56 5 48 5 36V14z"/><path fill="none" stroke="#ddd8a8" stroke-width="1.5" d="M32 7 54 17v18c0 10-10 17-22 23-12-6-22-13-22-23V17z"/><circle cx="41" cy="22" r="5" fill="#ffce6f"/><path fill="#f8ecca" d="m11 41 17-23 12 18 5-7 10 14H11zm16-16-5 8 5-2 4 2z" fill-rule="evenodd"/><path d="M19 45q7-3 13 0t13 0M23 49q5-2 10 0t7 0" fill="none" stroke="#d7c998" stroke-width="2"/></svg><div><h1 id="flightName">Cape Aidan</h1><div class="over" id="flightRegion">Brain Drain Flying · Island</div></div></header>
+<div class="compass" aria-label="Compass"><canvas id="comp"></canvas><div class="hdg" id="heading">000° N</div></div>
+<div class="flight-status">
+<div class="score" aria-label="Flight score"><div id="practiceScore" hidden><span class="over">Landing practice</span> <b id="practiceLevel"></b></div><div id="missionScore" hidden><span class="over" id="missionName"></span><strong id="missionValue"></strong></div><div class="scoretop"><span class="over">Ring score</span><span><strong id="score">00</strong> <em>/ 10</em></span></div><div class="blocks" id="blocks"></div></div>
+<div class="tools"><button id="trim" class="tool" title="Set level" aria-label="Set current grip as level" disabled><svg viewBox="0 0 20 20"><path d="M2 10h5l3 4 3-4h5M10 3v3"/></svg></button><button class="tool" id="pause" title="Pause flight (P)" aria-label="Pause flight" disabled><svg viewBox="0 0 20 20"><path d="M7 5v10m6-10v10"/></svg></button><button class="tool" id="restart" title="Flight setup (R)" aria-label="Return to flight setup"><svg viewBox="0 0 20 20"><path d="M4 8a6.4 6.4 0 1 1 .4 5M4 3.7V8h4.4"/></svg></button></div>
+</div>
+<div class="instruments"><div class="metrics"><div class="read"><div class="over"><svg viewBox="0 0 16 16"><path d="M2 12a6 6 0 1 1 12 0M8 9l3-3"/></svg>Airspeed</div><strong id="speed">86</strong> <small>kt</small></div><div class="read"><div class="over"><svg viewBox="0 0 16 16"><path d="m1 13 6-10 3 5 2-3 3 8z"/></svg>Altitude</div><strong id="alt">387</strong> <small>ft</small></div></div><div id="wind" class="wind" role="img" aria-label="Wind drift" hidden><span id="windArrow" aria-hidden="true">↑</span> Wind <b id="windSpeed"></b></div><div id="flightDynamics" hidden><span class="over">Vertical speed</span> <output id="verticalSpeed">0</output> <small>ft/min</small></div><strong id="stallWarning" role="status" hidden>Stall · ease forward and add power</strong><div id="approachInstrument" hidden><div class="needle-face" aria-hidden="true"><i></i><b></b></div><div><span class="over">Final <span id="finalCourse"></span></span><small id="needleCue"></small></div></div><div class="thrust"><span class="over">Throttle</span><span class="bar"><i id="thrust"></i></span><output id="power">55%</output></div></div>
+<button type="button" id="mapToggle" class="map-panel" aria-label="Enlarge course map" aria-expanded="false" aria-controls="map" aria-describedby="gateLabel dist">
+<span class="map-head"><span class="over">Course map</span><span class="north">↑ N</span><span class="map-action" aria-hidden="true">⤢</span></span>
+<canvas id="map" aria-hidden="true"></canvas>
+<span class="map-foot"><span id="gateLabel">Ring 01</span><span class="dist" id="dist">157 m</span></span></button>
+<div class="foot"><div class="binding" title="W pitches down, S pitches up"><b class="key">W</b><b class="key">S</b><span>Pitch</span></div><div class="binding"><b class="key">A</b><b class="key">D</b><span>Roll</span></div><div class="binding"><b class="key">Shift</b><span>Throttle</span></div></div>
+<div class="touch"><div class="touch-group"><button class="up" data-key="KeyS" aria-label="Pitch up">↑</button><button class="left" data-key="KeyA" aria-label="Roll left">↶</button><button data-key="KeyW" aria-label="Pitch down">↓</button><button data-key="KeyD" aria-label="Roll right">↷</button></div><button class="boost" data-key="ShiftLeft">Throttle</button></div>
+<div id="lever" role="group" aria-label="Engine throttle">
+<button id="idlePower" class="powerPreset" aria-label="Set idle throttle">Idle</button>
+<div id="throttleRail"><div class="groove"></div><div id="powerGrip"><span id="leverValue">55%</span></div>
+<input id="manualThrottle" type="range" min="0" max="100" step="1" value="55" aria-label="Engine throttle" aria-valuetext="55 percent"></div>
+<div class="powerShortcuts">
+<button id="fullPower" class="powerPreset" aria-label="Set full throttle">Max</button>
+<button id="lowPower" class="powerPreset" aria-label="Set throttle to 20 percent">20%</button>
+</div>
+</div>
+<div class="launch" id="launch"><div class="level-row setup-pickers"><label for="destination">Course</label><select id="destination"></select></div>
+<div class="level-row setup-pickers" id="layoutRow" hidden><label for="layout">Layout</label><select id="layout"></select></div>
+<div class="level-row setup-pickers"><label for="aircraft">Aircraft</label><select id="aircraft"></select></div><div class="level-row setup-pickers"><label for="mission">Mission</label><select id="mission">
+<option value="school">Flight school</option><option value="classic">Ring course</option><option value="fog">Fog landing</option><option value="daily">Daily landing</option><option value="delivery">Bush deliveries</option><option value="trial">Ghost time trial</option><option value="slalom">Canyon run</option></select></div>
+<div class="level-row" id="dispatch" hidden>
+<label for="cargo">Load</label><select id="cargo"><option value="65">Mail · 65 kg</option><option value="150">Food · 150 kg</option><option value="235">Tools · 235 kg</option></select>
+<label for="fuel">Fuel</label><select id="fuel"><option value="2">2 gal</option><option value="1">1 gal</option><option value="4">4 gal</option></select>
+<button id="reverseRoute" class="reverse" aria-label="Reverse delivery route">⇄</button></div>
+<div class="level-row"><label for="handling">Flight</label>
+<select id="handling" aria-label="Flight model"><option value="arcade">Arcade</option><option value="sim">Simulator</option></select>
+<label for="difficulty">Difficulty</label><select id="difficulty"><option value="easy">Easy</option><option value="normal">Normal</option><option value="hard">Hard</option><option value="expert">Expert</option></select></div><small id="unlockHint" role="status" aria-live="polite" hidden></small><small id="aircraftHint" role="status" aria-live="polite" hidden></small><small id="levelHint"></small><small id="landingBest" hidden></small><small id="loopHint" hidden></small><small id="gripHint">Hold your phone comfortably to set level.</small><div class="launch-actions"><button class="primary" id="start">Start flight <span class="key">↵</span></button><button id="leaderboard" class="secondary" hidden>Game Center</button><button id="parentSettingsOpen" class="secondary" aria-label="Settings, Parents">Settings</button><button id="practice" class="secondary">Practice landing</button></div></div>
+<button id="brake" aria-label="Hold wheel brakes">Brake</button><div id="approachGuide" hidden></div>
+<output id="boardStatus" aria-live="polite" hidden></output><div id="arrow" class="arrow" hidden></div><div id="toast" class="toast" role="status" hidden></div><section id="fuelStop" class="panel fuel" hidden aria-labelledby="fuelTaskName"><ol class="fuel-tasks"><li id="fuelTask-fuel">Fuel</li><li id="fuelTask-oil">Oil</li><li id="fuelTask-tyres">Tyres</li><li id="fuelTask-check">Final check</li></ol><h2 id="fuelTaskName"></h2><p id="fuelQuestion" class="fuel-question"></p><div class="fuel-answers"><button id="fuelA0" class="fuel-answer"></button><button id="fuelA1" class="fuel-answer"></button><button id="fuelA2" class="fuel-answer"></button></div><p id="fuelResult" class="fuel-result" role="status" aria-live="polite"></p><p class="fuel-clock"><span>Stop time</span> <strong id="fuelClock">0:00.000</strong></p></section><section class="panel" id="panel" hidden><h2 id="panelTitle"></h2><p id="panelMsg"></p><button class="primary" id="panelAction"></button><button id="resultBoard" class="secondary" hidden>Game Center</button><button class="secondary" id="newFlight" hidden>Flight setup</button></section>
+</div>
+<section id="parents" role="dialog" aria-modal="true" aria-labelledby="parentHeading">
+  <aside class="parentBrand" aria-hidden="true"><small>KTP GAMES</small><strong>Brain Drain<br>Flying</strong>
+    <svg viewBox="0 0 230 160" preserveAspectRatio="xMidYMax meet"><path fill="#618e70" d="M0 136Q60 75 113 107T230 119V160H0Z"/><path fill="#417f89" d="M0 151Q64 137 230 146V160H0Z"/><path fill="#193833" d="m135 51 44-4 9-10 5 1-3 10 16-1 5 3-21 5 4 12-6-1-7-10-45 5z"/></svg>
+  </aside>
+  <article class="parentCard">
+    <div id="parentLabel" class="parentLabel">For parents</div>
+    <h2 id="parentHeading" tabindex="-1">New planes and courses are earned with math.</h2>
+    <div id="parentSettings" hidden>
+      <button id="settingsClose" aria-label="Close settings">×</button>
+      <div class="parentLabel">Parents</div>
+      <div class="parentRow"><div><b id="learningName">Learning Mode</b><p id="learningExplanation">On: planes and courses unlock by answering math in Answer Rings. Off: everything is unlocked. Needs the parent PIN to change.</p></div><button id="learningSwitch" role="switch" aria-labelledby="learningName" aria-describedby="learningExplanation"></button></div>
+      <div class="parentRow"><div><b>Parent PIN</b><p>Forgot it? Answer the reset question you chose when you set the PIN.</p></div><button id="changePIN">Change PIN</button></div>
+      <div class="parentRow"><div><b id="biometricName">Unlock with Face ID or Touch ID</b><p id="biometricWarning">Only turn this on if this is your device. On your child's phone, Face ID recognizes your child.</p></div><button id="biometricSwitch" role="switch" aria-labelledby="biometricName" aria-describedby="biometricWarning"></button></div>
+      <div class="parentRow"><b>Show the parent notice again</b><button id="showNotice">Show notice</button></div>
+    </div>
+    <div id="parentNotice">
+      <p>Your pilot starts with the trainer plane and the first course. Every new plane and course unlocks by answering math questions correctly in Answer Rings, and the questions get harder as your pilot improves.</p>
+      <p>Teenager or adult flying? Turn Learning Mode off to unlock everything now. Answer Rings stay available as a game mode.</p>
+      <div class="parentActions"><button id="keepLearning" class="parentPrimary">Keep Learning Mode on</button><button id="olderPilot">Turn off for an older pilot</button></div>
+      <small>You can change this any time in Settings › Parents, protected by a parent PIN.</small>
+    </div>
+    <div id="parentPin" hidden>
+      <p id="pinNote">Only someone with this PIN can switch Learning Mode on or off later.</p>
+      <div id="pinCount" role="status" aria-live="polite"></div>
+      <div class="pinGrid" id="pinKeys"></div>
+      <div class="parentActions"><button id="pinCancel">Cancel</button><button class="parentPrimary" id="pinSubmit" disabled>Save PIN</button></div>
+      <button id="pinForgot" hidden>Forgot PIN?</button>
+    </div>
+    <div id="parentRecovery" hidden>
+      <label for="parentQuestion" id="questionLabel">Reset question</label><select id="parentQuestion"></select>
+      <label for="parentAnswer">Your answer</label><input id="parentAnswer" type="password" autocomplete="off" maxlength="512">
+      <div class="parentActions"><button id="recoveryCancel">Cancel</button><button id="recoverySave" class="parentPrimary">Save</button></div>
+    </div>
+    <div id="parentConfirmation" hidden><button id="parentStart" class="parentPrimary">Start flying</button></div>
+    <p id="parentError" role="alert"></p>
+  </article>
+</section>
+<script src="three.min.js"></script>
+<script src="courses.js"></script>
+<script src="game/core.js"></script>
+<script src="game/strings.js"></script>
+<script src="data/math-levels.js"></script>
+<script src="game/quiz.js"></script>
+<script src="data/fuel.js"></script>
+<script src="game/fuelstop.js"></script>
+<script src="unlocks.js"></script>
+<script src="saves.js"></script>
+<script src="scene.js"></script>
+<script src="terrain.js"></script>
+<script src="aircraft.js"></script>
+<script src="bridge.js"></script>
+<script src="missions.js"></script>
+<script src="landing.js"></script>
+<script src="fuelstrip.js"></script>
+<script src="physics.js"></script>
+<script src="effects.js"></script>
+<script src="hud.js"></script>
+<script src="parents.js"></script>
+<script src="main.js"></script>
+<script src="demo.js" defer></script></body></html>
